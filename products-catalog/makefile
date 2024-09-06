@@ -16,6 +16,9 @@ db:
 dbs:
 	docker exec -it $(MYSQL_CONTAINER_NAME) bash
 
+css:
+	npm run build
+
 build:
 	docker run -d --platform=linux/amd64 --name $(MYSQL_CONTAINER_NAME) -p 3306:3306 \
 	-e MYSQL_ROOT_PASSWORD=$(MYSQL_ROOT_PASSWORD) \

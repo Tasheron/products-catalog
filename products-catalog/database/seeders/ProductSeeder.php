@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Product;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -39,5 +40,9 @@ class ProductSeeder extends Seeder
                 'count' => 10,
             ],
         ]);
+
+        Product::factory()
+            ->count(200)
+            ->create();
     }
 }
