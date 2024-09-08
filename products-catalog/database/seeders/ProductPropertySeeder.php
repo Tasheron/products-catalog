@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\DB;
 
 class ProductPropertySeeder extends Seeder
@@ -12,7 +13,7 @@ class ProductPropertySeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table('product_properties')->insert([
+        $fakeItems = [
             [
                 'product_id' => 1,
                 'property_id' => 1,
@@ -53,6 +54,30 @@ class ProductPropertySeeder extends Seeder
                 'property_id' => 3,
                 'value' => 'Big',
             ],
-        ]);
+        ];
+
+        for ($i = 6; $i < 206; $i++) {
+            $propertyId = rand(1, 3);
+
+            switch ($propertyId) {
+                case 1:
+                    $value = Arr::random(['Red', 'Black', 'White']);
+                    break;
+                case 2:
+                    $value = Arr::random(['Samsuga', 'Banana']);
+                    break;
+                case 3:
+                    $value = Arr::random(['Small', 'Medium', 'Big']);
+                    break;
+            }
+
+            $fakeItems[] = [
+                'product_id' => $i,
+                'property_id' => $propertyId,
+                'value' => $value,
+            ];
+        }
+
+        DB::table('product_properties')->insert($fakeItems);
     }
 }
