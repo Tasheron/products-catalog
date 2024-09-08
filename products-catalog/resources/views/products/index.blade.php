@@ -1,4 +1,4 @@
-@vite(['resources/css/app.css'])
+@vite(['resources/sass/app.scss'])
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
@@ -23,5 +23,7 @@
                 </div>
             @endforeach
         </div>
+        <div class="links mt3">{{ $products->links() }}</div>
+        
     </body>
 </html>

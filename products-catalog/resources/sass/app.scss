@@ -1,0 +1,67 @@
+// Fonts
+@import url('https://fonts.bunny.net/css?family=Nunito');
+
+// Variables
+@import 'variables';
+
+// Bootstrap
+@import 'bootstrap/scss/bootstrap';
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.t-center {
+    text-align: center;
+}
+
+.mt1 {
+    margin-top: 10px !important;
+}
+
+.mt3 {
+    margin-top: 30px !important;
+}
+
+.mt5 {
+    margin-top: 50px !important;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.btn {
+    display: block;
+    width: 200px;
+    height: 40px;
+    margin: auto;
+}
+
+.btn + .btn {
+    margin-top: 30px;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 30px;
+}
+
+.card {
+    width: 200px;
+    height: 300px;
+    min-height: fit-content;
+    padding: 20px;
+    font-size: 18px;
+    border: 1px solid #aaa;
+    border-radius: 15px;
+}
+
+.links {
+    width: fit-content;
+    margin: auto;
+}
