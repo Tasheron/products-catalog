@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -26,5 +27,23 @@ class Product extends Model
     public function properties()
     {
         return $this->belongsToMany(Property::class, 'product_properties')->withPivot('value');
+    }
+
+    public function scopeFilter(Builder $query, ?array $properties)
+    {
+        if (isset($properties)) {
+            foreach ($properties as $categoryId => $category) {
+                $query->whereHas('properties', function (Builder $q) use ($categoryId, $category) {
+                    $q->where('property_id', '=', $categoryId)
+                        ->where(function ($q) use ($category) {
+                            foreach ($category as $value) {
+                                $q->orWhere('value', 'like', '%' . $value . '%');
+                            }
+                        });
+                });
+            }
+        }
+
+        return $query;
     }
 }

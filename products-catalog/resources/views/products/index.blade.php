@@ -10,6 +10,16 @@
     </head>
     <body class="font-sans antialiased dark:bg-black dark:text-white/50">
         <h1 class="t-center mt1">Catalog</h1>
+        <div class="search mt1">
+            <select id="category">
+                @foreach ($properties as $property)
+                    <option value="{{$property->id}}">{{ $property->name }}</option>
+                @endforeach
+            </select>
+            <input type="text" id="search" placeholder="Enter category value">
+            <button class="find">Add</button>
+            <button class="submit">Find</button>
+        </div>
         <div class="wrapper mt5">
             @foreach ($products as $product)
                 <div class="card">
@@ -24,6 +34,6 @@
             @endforeach
         </div>
         <div class="links mt3">{{ $products->links() }}</div>
-        
+        @vite(['resources/js/app.js'])
     </body>
 </html>
